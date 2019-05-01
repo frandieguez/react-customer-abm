@@ -17,3 +17,19 @@ code {
   margin: 5%;
   padding: 30px;
 }
+.customer-actions {
+  margin: 1em 0;
+}
+.customers-list {
+  display:table;
+  width: 100%
+}
+.customer-list-item {
+  display: table-row;
+  width:100%;
+}
+.customer-list-item .field {
+  display: table-cell;
+  padding: 5px;
+}
+.customers-list .customer-list-item:nth-child(even) {background: #CCC}
