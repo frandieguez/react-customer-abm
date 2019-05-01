@@ -7,17 +7,11 @@ import { fetchCustomers } from '../actions/fetchCustomers';
 import PropTypes from 'prop-types';
 import CustomerActions from '../components/CustomerActions';
 
-const customers = [
-  { name: 'Alan Moore', age: 34, dni: '123566X'},
-  { name: 'John Doe', age: 33, dni: '234234234Z'},
-  { name: 'Susan Page', age: 36, dni: '342342Y'}
-]
 class CustomersContainer extends Component {
 
   componentDidMount() {
     this.props.fetchCustomers();
   }
-
 
   handleAddNew = () => {
     this.props.history.push('/customers/new');
@@ -39,7 +33,7 @@ class CustomersContainer extends Component {
   render() {
     return (
       <div>
-        <AppFrame header='Customers listing' body={this.renderBody(customers)} />
+        <AppFrame header='Customers listing' body={this.renderBody(this.props.customers)} />
       </div>
     );
   }
@@ -47,7 +41,16 @@ class CustomersContainer extends Component {
 
 CustomersContainer.propTypes = {
   fetchCustomers: PropTypes.func.isRequired,
+  customers: PropTypes.array.isRequired,
 };
+
+CustomersContainer.defaultProps = {
+  customers: [
+    { name: 'Alan Moore', age: 34, dni: '123566X'},
+    { name: 'John Doe', age: 33, dni: '234234234Z'},
+    { name: 'Susan Page', age: 36, dni: '342342Y'}
+  ]
+}
 
 const mapDispatchToProps = { fetchCustomers }
 
