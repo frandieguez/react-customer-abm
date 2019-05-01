@@ -2,11 +2,11 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import AppFrame from '../components/AppFrame';
 import CustomerList from '../components/CustomerList';
-import { connect } from 'react-redux';
-import { fetchCustomers } from '../actions/fetchCustomers';
 import PropTypes from 'prop-types';
 import CustomerActions from '../components/CustomerActions';
 
+import { connect } from 'react-redux';
+import { fetchCustomers } from '../actions/fetchCustomers';
 import { getCustomers } from '../selectors/customers';
 
 class CustomersContainer extends Component {
@@ -55,4 +55,6 @@ const mapStateToProps = state => ({
 });
 const mapDispatchToProps = { fetchCustomers }
 
-export default withRouter(connect(mapStateToProps, mapDispatchToProps)(CustomersContainer));
+export default withRouter(
+  connect(mapStateToProps, mapDispatchToProps)(CustomersContainer)
+);
