@@ -7,6 +7,8 @@ import { fetchCustomers } from '../actions/fetchCustomers';
 import PropTypes from 'prop-types';
 import CustomerActions from '../components/CustomerActions';
 
+import { getCustomers } from '../selectors/customers';
+
 class CustomersContainer extends Component {
 
   componentDidMount() {
@@ -49,7 +51,7 @@ CustomersContainer.defaultProps = {
 }
 
 const mapStateToProps = state => ({
-  customers: state.customers
+  customers: getCustomers(state)
 });
 const mapDispatchToProps = { fetchCustomers }
 
