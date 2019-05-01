@@ -15,10 +15,6 @@ class CustomersContainer extends Component {
     this.props.fetchCustomers();
   }
 
-  handleAddNew = () => {
-    this.props.history.push('/customers/new');
-  }
-
   renderBody = (customers) => {
     return <React.Fragment>
       <CustomerList
@@ -26,7 +22,7 @@ class CustomersContainer extends Component {
         urlPath={'/customers'}
         />
       <CustomerActions>
-        <button onClick={this.handleAddNew}>New customer</button>
+        <button onClick={() => this.props.history.push('/customers/new')}>New customer</button>
         <button onClick={this.props.history.goBack}>Go back</button>
       </CustomerActions>
     </React.Fragment>
