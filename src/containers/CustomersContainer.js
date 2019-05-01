@@ -24,7 +24,7 @@ class CustomersContainer extends Component {
         />
       <CustomerActions>
         <button onClick={this.handleAddNew}>New customer</button>
-        <button onClick={this.props.history.back}>Go back</button>
+        <button onClick={this.props.history.goBack}>Go back</button>
       </CustomerActions>
     </React.Fragment>
   }

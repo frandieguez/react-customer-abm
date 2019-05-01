@@ -4,7 +4,6 @@ import PropTypes from 'prop-types'
 import { Delete, Edit } from '@material-ui/icons';
 
 const CustomerListItem = ({customer, editAction, delAction, baseUrl}) => {
-
   return (
     <div className="customer-list-item">
       <div className="field">

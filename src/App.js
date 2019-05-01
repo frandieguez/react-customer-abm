@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Route, Switch } from 'react-router-dom'
 import './App.css';
 import HomeContainer from './containers/HomeContainer';
 import CustomersContainer from './containers/CustomersContainer';
+import CustomerContainer from './containers/CustomerContainer';
 
 class App extends Component {
 
@@ -12,15 +13,13 @@ class App extends Component {
 
   render() {
     return (
-      <Router>
-        <div>
-          <Route exact path="/" component={HomeContainer} />
-          <Route exact path="/customers" component={CustomersContainer} />
-          <Switch>
-            <Route exact path="/customers/:dni" component={this.renderCustomerContainer} />
-            <Route path="/customers/new" component={this.renderCustomerNewContainer} />
-          </Switch>
-        </div>
+      <Router basename="/">
+        <Route exact path="/" component={HomeContainer} />
+        <Route exact path="/customers" component={CustomersContainer} />
+        <Switch>
+          <Route path="/customers/new" component={this.renderCustomerNewContainer} />
+          <Route path="/customers/:dni" component={CustomerContainer} />
+        </Switch>
       </Router>
     );
   }
