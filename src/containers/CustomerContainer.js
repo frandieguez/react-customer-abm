@@ -2,12 +2,20 @@ import React, { Component } from 'react';
 import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux'
 import AppFrame from '../components/AppFrame';
+import CustomerData from '../components/CustomerData';
 import PropTypes from 'prop-types';
 import CustomerActions from '../components/CustomerActions';
 
 class CustomerContainer extends Component {
   renderBody = (customer) => {
     return <React.Fragment>
+      <CustomerData
+        key={customer.dni}
+        dni={customer.dni}
+        name={customer.name}
+        age={customer.age}
+        />
+
       <CustomerActions>
         <button onClick={this.props.history.goBack}>Go back</button>
       </CustomerActions>
@@ -17,7 +25,7 @@ class CustomerContainer extends Component {
   render() {
     return (
       <div>
-        <AppFrame header={`Customer ${this.props.dni}`} body={this.renderBody(this.props.dni)} />
+        <AppFrame header={`Customer ${this.props.customer.name}`} body={this.renderBody(this.props.customer)} />
       </div>
     );
   }
@@ -25,11 +33,12 @@ class CustomerContainer extends Component {
 
 CustomerContainer.propTypes = {
   dni: PropTypes.string.isRequired,
+  customer: PropTypes.object.isRequired,
 };
 
-CustomerContainer.defaultTypes = {
-  dni: '',
-};
+const mapStateToProps = (state, props) => ({
+  customer: state.customers.find(c => c.dni === props.dni)
+})
 
-export default withRouter(connect(null, null)(CustomerContainer));
+export default withRouter(connect(mapStateToProps, null)(CustomerContainer));
 
