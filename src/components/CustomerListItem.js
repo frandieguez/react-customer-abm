@@ -10,7 +10,7 @@ const CustomerListItem = ({customer, editAction, delAction, baseUrl}) => {
         <Link to={`${baseUrl}/${customer.dni}`}>{customer.name}</Link>
       </div>
       <div className="field">
-        <Link to={`${baseUrl}/${customer.dni}`}><Edit /></Link>
+        <Link to={`${baseUrl}/${customer.dni}/edit`}><Edit /></Link>
       </div>
       <div className="field">
         <Link to={`${baseUrl}/${customer.dni}/delete`}><Delete /></Link>
