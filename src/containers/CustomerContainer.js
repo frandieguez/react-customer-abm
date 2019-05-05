@@ -17,7 +17,7 @@ class CustomerContainer extends Component {
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl initialValues={customer} />
+          return <CustomerControl {...customer} />
         }
       }></Route>
       <CustomerActions>
@@ -48,4 +48,3 @@ const mapStateToProps = (state, props) => ({
 })
 
 export default withRouter(connect(mapStateToProps, null)(CustomerContainer));
-
