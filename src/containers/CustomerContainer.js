@@ -46,7 +46,7 @@ class CustomerContainer extends Component {
 
 CustomerContainer.propTypes = {
   dni: PropTypes.string.isRequired,
-  customer: PropTypes.object.isRequired,
+  customer: PropTypes.object,
   fetchCustomers: PropTypes.func.isRequired,
 };
 
