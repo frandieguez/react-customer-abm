@@ -7,6 +7,7 @@ import PropTypes from 'prop-types';
 import { getCustomerByDni } from '../selectors/customers';
 import CustomerEdit from '../components/CustomerEdit';
 import { fetchCustomers } from '../actions/fetchCustomers';
+import { updateCustomer } from '../actions/updateCustomer';
 
 class CustomerContainer extends Component {
 
@@ -17,7 +18,8 @@ class CustomerContainer extends Component {
   }
 
   handleSubmit = values => {
-    console.log(JSON.stringify(values));
+    const { id } = values;
+    this.props.updateCustomer(id, values)
   }
 
   renderBody = () => {
@@ -55,5 +57,6 @@ const mapStateToProps = (state, props) => ({
 })
 
 export default withRouter(connect(mapStateToProps, {
-  fetchCustomers
+  fetchCustomers,
+  updateCustomer
 })(CustomerContainer));
