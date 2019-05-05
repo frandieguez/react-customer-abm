@@ -10,8 +10,8 @@ import CustomerEdit from '../components/CustomerEdit';
 
 
 class CustomerContainer extends Component {
-  renderBody = (customer) => {
 
+  renderBody = (customer) => {
     return <React.Fragment>
       <Route path="/customers/:dni/edit" children={
         ( { match } ) => {
@@ -24,12 +24,9 @@ class CustomerContainer extends Component {
         <button onClick={this.props.history.goBack}>Go back</button>
       </CustomerActions>
     </React.Fragment>
-
   }
 
   render() {
-
-    // body={this.renderBody(this.props.customer)}
     return (
       <div>
         <AppFrame
