@@ -6,10 +6,14 @@ import { setPropsAsInitial } from '../helpers/setPropsAsInitial';
 const isRequired = (value) => (
   !value && 'This fiedl is required'
 )
+const isNumber = (value) => (
+  isNaN(Number(value)) && "The field must be a number"
+)
 
-const MyField = ({ input, meta }) => (
+const MyField = ({ input, meta, type, label, name }) => (
   <div>
-    <input {...input} type="text"/>
+    <label htmlFor={name}>{label}</label>
+    <input name={name} {...input} type={!type ? "text" : type} />
     {
       meta.error && meta.touched && <span>{meta.error}</span>
     }
@@ -22,28 +26,25 @@ const CustomerEdit = ({name, dni, age}) => {
       <h2>Customer editing</h2>
 
       <form action="">
-        <div>
-          <label htmlFor="name">Name</label>
-          <Field
-            name="name"
-            component={MyField}
-            type="text"
-            validate={isRequired}
-          />
-        </div>
-        <div>
-          <label htmlFor="dni">DNI</label>
-          <Field
-            name="dni"
-            component={MyField}
-            type="text"
-            validate={isRequired}
-          />
-        </div>
-        <div>
-          <label htmlFor="age">Age</label>
-          <Field name="age" component="input" type="number"></Field>
-        </div>
+        <Field
+          label="Name"
+          name="name"
+          component={MyField}
+          validate={isRequired}
+        />
+        <Field
+          label="DNI"
+          name="dni"
+          component={MyField}
+          validate={[isRequired, isNumber ]}
+        />
+        <Field
+          label="Age"
+          name="age"
+          component={MyField}
+          type="number"
+          validate={isNumber}
+        />
       </form>
     </div>
   )
