@@ -10,6 +10,20 @@ const isNumber = (value) => (
   isNaN(Number(value)) && "The field must be a number"
 )
 
+const validate = values => {
+  const error = {};
+
+  if (!values.name) {
+    error.name = 'The name is required';
+  }
+
+  if (!values.dni) {
+    error.dni = 'The dni is required'
+  }
+
+  return error;
+}
+
 const MyField = ({ input, meta, type, label, name }) => (
   <div>
     <label htmlFor={name}>{label}</label>
@@ -36,7 +50,6 @@ const CustomerEdit = ({name, dni, age}) => {
           label="DNI"
           name="dni"
           component={MyField}
-          validate={[isRequired, isNumber ]}
         />
         <Field
           label="Age"
@@ -56,6 +69,9 @@ CustomerEdit.propTypes = {
   age: PropTypes.number,
 }
 
-const CustomerEditForm = reduxForm({ form: 'CustomerEdit' })(CustomerEdit)
+const CustomerEditForm = reduxForm({
+  form: 'CustomerEdit',
+  validate
+})(CustomerEdit)
 
 export default setPropsAsInitial(CustomerEditForm);
