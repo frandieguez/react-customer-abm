@@ -5,6 +5,7 @@ import AppFrame from '../components/AppFrame';
 import CustomerData from '../components/CustomerData';
 import PropTypes from 'prop-types';
 import CustomerActions from '../components/CustomerActions';
+import { getCustomerByDni } from '../selectors/customers';
 
 class CustomerContainer extends Component {
   renderBody = (customer) => {
@@ -37,7 +38,7 @@ CustomerContainer.propTypes = {
 };
 
 const mapStateToProps = (state, props) => ({
-  customer: state.customers.find(c => c.dni === props.dni)
+  customer: getCustomerByDni(state, props)
 })
 
 export default withRouter(connect(mapStateToProps, null)(CustomerContainer));
