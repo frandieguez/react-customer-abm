@@ -4,7 +4,6 @@ import { connect } from 'react-redux'
 import AppFrame from '../components/AppFrame';
 import CustomerData from '../components/CustomerData';
 import PropTypes from 'prop-types';
-import CustomerActions from '../components/CustomerActions';
 import { getCustomerByDni } from '../selectors/customers';
 import CustomerEdit from '../components/CustomerEdit';
 
@@ -15,13 +14,13 @@ class CustomerContainer extends Component {
     console.log(JSON.stringify(values));
   }
 
-  renderBody = (customer) => {
+  renderBody = () => {
     return <React.Fragment>
       <Route path="/customers/:dni/edit" children={
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl {...customer} onSubmit={this.handleSubmit} goBack={this.props.history.goBack} />
+          return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} goBack={this.props.history.goBack} />
         }
       }></Route>
     </React.Fragment>
@@ -31,8 +30,8 @@ class CustomerContainer extends Component {
     return (
       <div>
         <AppFrame
-          header={`Customer data for ${this.props.customer.name}`}
-          body={this.renderBody(this.props.customer)}
+          header={`Customer data for ${this.props.dni}`}
+          body={this.renderBody()}
           />
       </div>
     );
