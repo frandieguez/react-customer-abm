@@ -34,12 +34,12 @@ const MyField = ({ input, meta, type, label, name }) => (
   </div>
 );
 
-const CustomerEdit = ({name, dni, age}) => {
+const CustomerEdit = ({name, dni, age, handleSubmit, submitting}) => {
   return (
     <div>
       <h2>Customer editing</h2>
 
-      <form action="">
+      <form onSubmit={handleSubmit}>
         <Field
           label="Name"
           name="name"
@@ -58,6 +58,9 @@ const CustomerEdit = ({name, dni, age}) => {
           type="number"
           validate={isNumber}
         />
+        <CustomerActions>
+          <button type="submit" disabled={submitting}>Submit</button>
+        </CustomerActions>
       </form>
     </div>
   )

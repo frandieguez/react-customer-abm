@@ -11,13 +11,17 @@ import CustomerEdit from '../components/CustomerEdit';
 
 class CustomerContainer extends Component {
 
+  handleSubmit = values => {
+    console.log(JSON.stringify(values));
+  }
+
   renderBody = (customer) => {
     return <React.Fragment>
       <Route path="/customers/:dni/edit" children={
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl {...customer} />
+          return <CustomerControl {...customer} onSubmit={this.handleSubmit} />
         }
       }></Route>
       <CustomerActions>
