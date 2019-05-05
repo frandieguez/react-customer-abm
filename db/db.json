@@ -1,7 +1,22 @@
 {
   "customers": [
-    { "name": "Alan Moore", "age": 34, "dni": "12312314X" },
-    { "name": "John Doe",   "age": 33, "dni": "234234234Z" },
-    { "name": "Susan Page", "age": 36, "dni": "3234234Y"}
+    {
+      "name": "Alan Moore",
+      "id": "12312314X",
+      "age": 33,
+      "dni": "12312314X"
+    },
+    {
+      "name": "John Doe",
+      "age": 33,
+      "dni": "234234234Z",
+      "id": "234234234Z"
+    },
+    {
+      "name": "Susan Page",
+      "age": 36,
+      "dni": "3234234Y",
+      "id": "3234234Y"
+    }
   ]
 }
