@@ -17,7 +17,7 @@ class CustomerContainer extends Component {
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl {...customer} />
+          return <CustomerControl initialValues={customer} />
         }
       }></Route>
       <CustomerActions>
