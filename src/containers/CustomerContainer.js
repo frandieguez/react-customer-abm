@@ -32,7 +32,10 @@ class CustomerContainer extends Component {
     // body={this.renderBody(this.props.customer)}
     return (
       <div>
-        <AppFrame header={`Customer data for ${this.props.customer.name}`} body={this.renderBody(this.props.customer)} />
+        <AppFrame
+          header={`Customer data for ${this.props.customer.name}`}
+          body={this.renderBody(this.props.customer)}
+          />
       </div>
     );
   }
