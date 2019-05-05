@@ -1,7 +1,8 @@
 import React from 'react'
 import PropTypes from 'prop-types'
+import CustomerActions from './CustomerActions';
 
-function CustomerData({name, dni, age }) {
+function CustomerData({name, dni, age, goBack }) {
   return (
     <div>
       <div className="customer-data">
@@ -10,6 +11,9 @@ function CustomerData({name, dni, age }) {
         <div><strong>DNI</strong> <i>{dni}</i></div>
         <div><strong>Age</strong> <i>{age}</i></div>
       </div>
+      <CustomerActions>
+        <button onClick={goBack}>Go Back</button>
+      </CustomerActions>
     </div>
   )
 }

@@ -21,12 +21,9 @@ class CustomerContainer extends Component {
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl {...customer} onSubmit={this.handleSubmit} />
+          return <CustomerControl {...customer} onSubmit={this.handleSubmit} goBack={this.props.history.goBack} />
         }
       }></Route>
-      <CustomerActions>
-        <button onClick={this.props.history.goBack}>Go back</button>
-      </CustomerActions>
     </React.Fragment>
   }
 
