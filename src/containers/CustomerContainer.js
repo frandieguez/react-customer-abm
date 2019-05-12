@@ -22,13 +22,22 @@ class CustomerContainer extends Component {
     return this.props.updateCustomer(id, values);
   }
 
+  handleOnSubmitSuccess = () => {
+    this.props.history.goBack()
+  }
+
   renderBody = () => {
     return <React.Fragment>
       <Route path="/customers/:dni/edit" children={
         ( { match } ) => {
           const CustomerControl = match ? CustomerEdit : CustomerData;
 
-          return <CustomerControl {...this.props.customer} onSubmit={this.handleSubmit} goBack={this.props.history.goBack} />
+          return <CustomerControl
+            {...this.props.customer}
+            onSubmit={this.handleSubmit}
+            goBack={this.props.history.goBack}
+            onSubmitSuccess={this.handleOnSubmitSuccess}
+            />
         }
       }></Route>
     </React.Fragment>
