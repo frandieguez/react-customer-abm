@@ -19,7 +19,7 @@ class CustomerContainer extends Component {
 
   handleSubmit = values => {
     const { id } = values;
-    this.props.updateCustomer(id, values)
+    return this.props.updateCustomer(id, values);
   }
 
   renderBody = () => {
