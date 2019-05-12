@@ -8,6 +8,7 @@ import { getCustomerByDni } from '../selectors/customers';
 import CustomerEdit from '../components/CustomerEdit';
 import { fetchCustomers } from '../actions/fetchCustomers';
 import { updateCustomer } from '../actions/updateCustomer';
+import { SubmissionError } from 'redux-form';
 
 class CustomerContainer extends Component {
 
@@ -19,7 +20,11 @@ class CustomerContainer extends Component {
 
   handleSubmit = values => {
     const { id } = values;
-    return this.props.updateCustomer(id, values);
+    return this.props.updateCustomer(id, values).then(r => {
+      if (r.error) {
+        throw new SubmissionError(r.payload);
+      }
+    });
   }
 
   handleOnSubmitSuccess = () => {
