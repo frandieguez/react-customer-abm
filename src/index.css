@@ -85,3 +85,17 @@ a:hover {
   margin-top: 1em;
   color: rgba(0,0,0, .5);
 }
+
+.myfield {
+  margin-bottom:1em;
+}
+
+label {
+  min-width: 100px;
+  display: inline-block;
+}
+
+input[type='text'],
+input[type='number'] {
+  padding: 5px;
+}

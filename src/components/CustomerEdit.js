@@ -26,7 +26,7 @@ const validate = values => {
 }
 
 const MyField = ({ input, meta, type, label, name }) => (
-  <div>
+  <div className="myfield">
     <label htmlFor={name}>{label}</label>
     <input name={name} {...input} type={!type ? "text" : type} />
     {
