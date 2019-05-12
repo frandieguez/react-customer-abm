@@ -35,6 +35,12 @@ const MyField = ({ input, meta, type, label, name }) => (
   </div>
 );
 
+const toNumber = value => value && Number(value)
+const toUpper = value => value && value.toUpperCase();
+const toLower = value => value && value.toLowerCase();
+const limitNumbers = (value, previousValue, values) =>
+    value (value < 100 ? value : previousValue);
+
 const CustomerEdit = ({name, dni, age, handleSubmit, submitting, goBack}) => {
   return (
     <div>
@@ -44,8 +50,11 @@ const CustomerEdit = ({name, dni, age, handleSubmit, submitting, goBack}) => {
         <Field
           label="Name"
           name="name"
+          type="text"
           component={MyField}
           validate={isRequired}
+          parse={toUpper}
+          format={toLower}
         />
         <Field
           label="DNI"
@@ -58,6 +67,8 @@ const CustomerEdit = ({name, dni, age, handleSubmit, submitting, goBack}) => {
           component={MyField}
           type="number"
           validate={isNumber}
+          parse={toNumber}
+          normalize={limitNumbers}
         />
         <CustomerActions>
           <button type="submit" disabled={submitting}>Submit</button>
